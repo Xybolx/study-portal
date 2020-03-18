@@ -4,7 +4,7 @@ const session = require("express-session");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express(); 
-const PORT = process.env.PORT || 3001;
+const port = process.env.port || 3001;
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -30,6 +30,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/power", { useNe
 app.use(routes);
 
 // Start the API server
-app.listen(PORT, function() {
+app.listen(port, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
