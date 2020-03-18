@@ -1,0 +1,43 @@
+.App {
+  /* background: rgba(132, 197, 197, 0.13); */
+  text-align: center;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#loginTitle,
+#homeTitle,
+#portalTitle {
+  margin-top: 5%;
+}
+
+.modal-content {
+  background: rgba(0, 0, 0, 0.575);
+  box-shadow: 0 0 5px 1px rgb(79, 90, 187);
+}
+
+.modal-header {
+  background: rgba(0, 0, 0, 0.61);
+  border: 1px solid  rgb(83, 76, 224);
+  color: whitesmoke;
+}
+
+.modal-footer {
+  text-align: right;
+  border: unset;
+}
+
+.btn-dark {
+  border: 1px solid  rgb(79, 90, 187);
+}
+
+.users {
+  height: 500px;
+  overflow: auto;
+}
+
+.home-img {
+  background: whitesmoke;
+}

@@ -1,0 +1,15 @@
+.modal-content {
+    background: rgba(0, 0, 0, 0.664);
+    box-shadow: 0 0 5px 1px rgb(79, 90, 187);
+  }
+  
+  .modal-header {
+    background: rgba(0, 0, 0, 0.61);
+    border: 1px solid  rgb(83, 76, 224);
+    color: whitesmoke;
+  }
+  
+  .modal-footer {
+    text-align: right;
+    border: unset;
+  }
