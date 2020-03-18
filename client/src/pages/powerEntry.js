@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import API from '../utils/API';
+import usePptCRUD from '../components/usePptCRUD';
 import { Label, Input, FormBtn, useForm } from '../components/form';
 import { Col } from '../components/grid';
 import Title from '../components/title/title';
@@ -9,22 +9,23 @@ import { PortalNav } from '../components/navbar';
 
 const PowerEntry = () => {
 
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const { savePpt, isSubmitted } = usePptCRUD();
 
     const [values, handleChange] = useForm({
         title: '',
         url: '',
     });
 
+    const { title, url } = values;
+
     const handleFormSubmit = ev => {
         ev.preventDefault();
-        if (values.title && values.url) {
-            API.savePowerPoint({
-                title: values.title,
-                url: values.url,
-            })
-                .then(res => setTimeout(() => setIsSubmitted(true), 2000))
-                .catch(err => console.log(err))
+        const pptData = {
+            title,
+            url
+        }
+        if (title && url) {
+            savePpt(pptData);
         };
     };
 
@@ -36,46 +37,48 @@ const PowerEntry = () => {
         <div>
             <PortalNav />
             <Title />
-            <Col>
-                <div className="card">
-                    <div className="card-header">
-                        <CardHeader>
-                            New Powerpoint
-                        </CardHeader>
+            <div className="container">
+                <Col>
+                    <div className="card">
+                        <div className="card-header">
+                            <CardHeader>
+                                New Powerpoint
+                            </CardHeader>
+                        </div>
+                        <form className="text-left" onSubmit={handleFormSubmit}>
+                            <Label
+                                htmlFor="title">
+                                Title
+                            </Label>
+                            <Input
+                                name="title"
+                                type="text"
+                                placeholder="Title"
+                                value={values.title}
+                                onChange={handleChange}
+                                required
+                                />
+                            <Label
+                                htmlFor="url">
+                                Powerpoint URL
+                            </Label>
+                            <Input
+                                name="url"
+                                type="url"
+                                placeholder="Enter A URL"
+                                value={values.url}
+                                onChange={handleChange}
+                                required
+                                />
+                            <FormBtn
+                                type="submit"
+                                disabled={!(values.title && values.url)}>
+                                <i className="far fa-id-card"></i> Create Link
+                            </FormBtn>
+                        </form>
                     </div>
-                    <form className="text-left" onSubmit={handleFormSubmit}>
-                        <Label
-                            htmlFor="title">
-                            Title
-                        </Label>
-                        <Input
-                            name="title"
-                            type="text"
-                            placeholder="Title"
-                            value={values.title}
-                            onChange={handleChange}
-                            required
-                            />
-                        <Label
-                            htmlFor="url">
-                            Powerpoint URL
-                        </Label>
-                        <Input
-                            name="url"
-                            type="url"
-                            placeholder="Enter A URL"
-                            value={values.url}
-                            onChange={handleChange}
-                            required
-                            />
-                        <FormBtn
-                            type="submit"
-                            disabled={!(values.title && values.url)}>
-                            <i className="far fa-id-card"></i> Create Link
-                        </FormBtn>
-                    </form>
-                </div>
-            </Col>
+                </Col>
+            </div>
         </div>
     );
 };

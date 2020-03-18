@@ -18,13 +18,13 @@
   }
 
 .navbar-brand:hover {
-    color: yellow !important;
+    color: rgb(255, 196, 0) !important;
   }
   
 .nav-link:hover {
-    color: yellow;
+    color: rgb(79, 90, 187);
   }
   
 .nav-link.active {
-    color: rgb(79, 90, 187) !important;
+    color: rgb(255, 196, 0)
   }

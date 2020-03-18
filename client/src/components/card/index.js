@@ -3,9 +3,7 @@ import './card.css';
 
 export const CardHeader = ({ children }) => {
     return (
-        <h4>
-            {children}
-        </h4>
+        <h4>{children}</h4>
     );
 };
 

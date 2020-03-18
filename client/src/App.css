@@ -20,7 +20,7 @@ button:hover {
 
 .modal-header {
   background: rgba(0, 0, 0, 0.61);
-  border: 1px solid  rgb(83, 76, 224);
+  border-bottom: 1px solid  rgb(83, 76, 224);
   color: whitesmoke;
 }
 

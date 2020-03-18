@@ -4,6 +4,7 @@ import UserContext from './components/context/userContext';
 import PowerPointContext from './components/context/powerPointContext';
 import EditUserContext from './components/context/editUserContext';
 import useIdleTimer from './components/windowEvents/useIdleTimer';
+import useArray from './components/useArray';
 import Home from './pages/home';
 import Entry from './pages/entry';
 import PowerEntry from './pages/powerEntry';
@@ -13,7 +14,7 @@ import Portal from './pages/portal';
 import Roster from './pages/roster';
 import Edit from './pages/edit';
 import LogIn from './pages/logIn';
-import Modal from './components/modal';
+import WarningModal from './components/modal/warningModal';
 import './App.css';
 
 const App = () => {
@@ -22,9 +23,9 @@ const App = () => {
 
   const value = useMemo(() => ({ user, setUser }), [user, setUser]);
 
-  const [powerPoints, setPowerPoints] = useState([]);
+  const [powerPoints, setPowerPoints, addPowerPoint, removePowerPoint, clearPowerPoints] = useArray([]);
 
-  const powerPointValue = useMemo(() => ({ powerPoints, setPowerPoints }), [powerPoints, setPowerPoints]);
+  const powerPointValue = useMemo(() => ({ powerPoints, setPowerPoints, addPowerPoint, removePowerPoint, clearPowerPoints }), [powerPoints, setPowerPoints, addPowerPoint, removePowerPoint, clearPowerPoints]);
 
   const [editUser, setEditUser] = useState(null);
 
@@ -41,7 +42,7 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Modal />
+        <WarningModal />
         <Switch>
           <Route exact path='/' component={Home} />
           <PowerPointContext.Provider value={powerPointValue}>

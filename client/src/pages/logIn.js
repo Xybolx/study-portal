@@ -70,6 +70,8 @@ const LogIn = () => {
         <div>
             <HomeNav />
             <Title />
+            <div className="container">
+
             <Col id="loginTitle">
                 <div className="card">
                     <div className="card-header">
@@ -102,7 +104,7 @@ const LogIn = () => {
                             onChange={handleChange}
                             minLength="6"
                             required
-                        />
+                            />
                         <div id="submitError" className="text-danger">
                             {message}
                         </div>
@@ -117,6 +119,7 @@ const LogIn = () => {
                     </form>
                 </div>
             </Col>
+            </div>
         </div>
     );
 };

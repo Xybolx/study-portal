@@ -43,77 +43,79 @@ const Entry = () => {
         <div>
             <PortalNav />
             <Title />
-            <Col>
-                <div className="card">
-                    <div className="card-header">
-                        <CardHeader>
-                            New Roster Entry
-                        </CardHeader>
-                    </div>
-                    <form className="text-left mt-3" onSubmit={handleFormSubmit}>
-                        <Label
-                            htmlFor="name">
-                            Name
-                        </Label>
-                        <Input
-                            name="name"
-                            type="text"
-                            placeholder="Name"
-                            value={name}
-                            onChange={handleChange}
-                            required
-                        />
-                        <Label
-                            htmlFor="email">
-                                Email Address
-                        </Label>
-                        <Input
-                            name="email"
-                            type="email"
-                            placeholder="Enter Email"
-                            value={email}
-                            onChange={handleChange}
-                            required
-                        />
-                        <Label
-                            htmlFor="password"
-                            >Password
-                        </Label>
-                        <Input
-                            name="password"
-                            type="password"
-                            placeholder="Enter Password"
-                            value={password}
-                            onChange={handleChange}
-                            minLength="6"
-                            required
-                        />
-                        <Label
-                            htmlFor="permissions">
-                                Choose Permissions
-                        </Label>
-                        <Select
-                            name="permissions"
-                            placeholder="Choose Permissions"
-                            value={permissions}
-                            onChange={handleChange}
-                            option1="Student"
-                            option2="Admin"
-                            required
-                        />
-                        <FormBtn
-                            type="submit"
-                            disabled={
-                                !(  name &&
-                                    email &&
-                                    password &&
-                                    permissions
-                                )}>
-                                <i className="far fa-id-card"></i> Create Profile
-                            </FormBtn>
-                        </form>
-                    </div>
-                </Col>
+            <div className="container">
+                <Col>
+                    <div className="card">
+                        <div className="card-header">
+                            <CardHeader>
+                                New Roster Entry
+                            </CardHeader>
+                        </div>
+                        <form className="text-left mt-3" onSubmit={handleFormSubmit}>
+                            <Label
+                                htmlFor="name">
+                                Name
+                            </Label>
+                            <Input
+                                name="name"
+                                type="text"
+                                placeholder="Name"
+                                value={name}
+                                onChange={handleChange}
+                                required
+                                />
+                            <Label
+                                htmlFor="email">
+                                    Email Address
+                            </Label>
+                            <Input
+                                name="email"
+                                type="email"
+                                placeholder="Enter Email"
+                                value={email}
+                                onChange={handleChange}
+                                required
+                                />
+                            <Label
+                                htmlFor="password"
+                                >Password
+                            </Label>
+                            <Input
+                                name="password"
+                                type="password"
+                                placeholder="Enter Password"
+                                value={password}
+                                onChange={handleChange}
+                                minLength="6"
+                                required
+                                />
+                            <Label
+                                htmlFor="permissions">
+                                    Choose Permissions
+                            </Label>
+                            <Select
+                                name="permissions"
+                                placeholder="Choose Permissions"
+                                value={permissions}
+                                onChange={handleChange}
+                                option1="Student"
+                                option2="Admin"
+                                required
+                                />
+                            <FormBtn
+                                type="submit"
+                                disabled={
+                                    !(  name &&
+                                        email &&
+                                        password &&
+                                        permissions
+                                        )}>
+                                    <i className="far fa-id-card"></i> Create Profile
+                                </FormBtn>
+                            </form>
+                        </div>
+                    </Col>
+                </div>
             </div>
         );
     };

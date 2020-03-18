@@ -50,36 +50,38 @@ const Edit = () => {
         <div>
             <EditNav />
             <Title />
-            <Col>
-            <div className="card">
-                <div className="card-header">
-                    <CardHeader>
-                        Edit Roster Entry
-                    </CardHeader>
-                </div>
-                <h6 className="mt-2">(Must enter a new password)</h6>
-                    <form className="text-left" onSubmit={handleFormSubmit}>
-                        <Label htmlFor="name">Name</Label>
-                        <Input name="name" placeholder="Enter Name" value={values.name} onChange={handleChange} required />
-                        <Label htmlFor="email">Email Address</Label>
-                        <Input name="email" type="email" placeholder="Enter Email" value={values.email} onChange={handleChange} required />
-                        <Label htmlFor="password">Password</Label>
-                        <Input name="password" type="password" placeholder="Enter Password" value={values.password} onChange={handleChange} required />
-                        <Label htmlFor="permissions">Choose Permissions</Label>
-                        <Select name="permissions" placeholder="Choose Permissions" option1="Student" option2="Admin" value={values.permissions} onChange={handleChange} required />
-                        <FormBtn
-                            type="submit"
-                            disabled={
-                                !(  values.name
-                                    && values.email
-                                    && values.password
-                                    && values.permissions
-                                )}>
-                            <i className="far fa-id-card"></i> Update Roster Entry
-                        </FormBtn>
-                    </form>
-                </div>
-            </Col>
+            <div className="container">
+                <Col>
+                <div className="card">
+                    <div className="card-header">
+                        <CardHeader>
+                            Edit Roster Entry
+                        </CardHeader>
+                    </div>
+                    <h6 className="mt-2">(Must enter a new password)</h6>
+                        <form className="text-left" onSubmit={handleFormSubmit}>
+                            <Label htmlFor="name">Name</Label>
+                            <Input name="name" placeholder="Enter Name" value={values.name} onChange={handleChange} required />
+                            <Label htmlFor="email">Email Address</Label>
+                            <Input name="email" type="email" placeholder="Enter Email" value={values.email} onChange={handleChange} required />
+                            <Label htmlFor="password">Password</Label>
+                            <Input name="password" type="password" placeholder="Enter Password" value={values.password} onChange={handleChange} required />
+                            <Label htmlFor="permissions">Choose Permissions</Label>
+                            <Select name="permissions" placeholder="Choose Permissions" option1="Student" option2="Admin" value={values.permissions} onChange={handleChange} required />
+                            <FormBtn
+                                type="submit"
+                                disabled={
+                                    !(  values.name
+                                        && values.email
+                                        && values.password
+                                        && values.permissions
+                                        )}>
+                                <i className="far fa-id-card"></i> Update Roster Entry
+                            </FormBtn>
+                        </form>
+                    </div>
+                </Col>
+            </div>
         </div>
     );
 };

@@ -6,14 +6,15 @@ import Title from '../components/title/title';
 import { PortalNav } from '../components/navbar';
 import { Col } from '../components/grid';
 import { CardHeader, CardItem, CardSpan, DeleteBtn, ConfirmBtn } from '../components/card';
-import usePptCRUD from '../components/usePptCRUD';
+import IframeModal from '../components/modal/iframeModal';
+import Iframe from '../components/iframe';
 
 
-const PowerPoint = () => {
+const PowerPointIframe = () => {
 
     const { user } = useContext(UserContext);
     
-    const { powerPoints, deletePpt } = usePptCRUD();
+    const { powerPoints, setPowerPoints } = useContext(PowerPointContext);
 
     const adminInlineStyle = {
         ...user.permissions
@@ -22,11 +23,29 @@ const PowerPoint = () => {
             : { display: 'none' }
     };
 
+    const loadPowerPoints = useCallback(
+        () => {
+            API.getPowerPoints()
+            .then(res => setPowerPoints(res.data))
+            .catch(err => console.log(err))
+        },
+        [setPowerPoints],
+    );
+
+    const deletePowerPoint = id => {
+        API.deletePowerPoint(id)
+            .then(res => loadPowerPoints())
+            .catch(err => console.log(err));
+    };
+
+    useEffect(() => {
+        loadPowerPoints();
+    }, [loadPowerPoints]);
+
     return (
         <div>
             <PortalNav />
             <Title />
-            <div className="container">
             {powerPoints && (
                 <Col>
                     {powerPoints.map(ppt => (
@@ -39,10 +58,16 @@ const PowerPoint = () => {
                             <div className="card-body text-left">
                                 <CardItem>
                                     Link:
-                                        <CardSpan>
-                                        &nbsp;<a className="btn btn-link btn-lg" href={ppt.url} rel="noopener noreferrer" target="_blank">{ppt.title}</a>
+                                    <CardSpan>
+                                        &nbsp;<button className="btn btn-link btn-lg" data-toggle="modal" data-target={`ModalCenterIframe${ppt._id}`}>{ppt.title}</button>
                                     </CardSpan>
                                 </CardItem>
+                                <IframeModal pptId={ppt._id} title={ppt.title}>
+                                    <Iframe
+                                        title={ppt.title}
+                                        src={ppt.url}
+                                    />
+                                </IframeModal>
                                 <div className="text-right">
                                     <DeleteBtn
                                         style={adminInlineStyle}
@@ -64,8 +89,8 @@ const PowerPoint = () => {
                                                 <strong>Are you sure you want to delete {ppt.title}?</strong>
                                             </div>
                                             <div className="modal-footer">
-                                                <DeleteBtn data-dismiss="modal"><i className="fas fa-times fa-fw"></i>No</DeleteBtn>
-                                                <ConfirmBtn data-dismiss="modal" onClick={() => deletePpt(ppt._id)}><i className="fas fa-check fa-fw"></i>Yes</ConfirmBtn>
+                                                <DeleteBtn data-dismiss="modal"><i className="fas fa-times fa-fw"></i></DeleteBtn>
+                                                <ConfirmBtn data-dismiss="modal" onClick={() => deletePowerPoint(ppt._id)}><i className="fas fa-check fa-fw"></i></ConfirmBtn>
                                             </div>
                                         </div>
                                     </div>
@@ -75,9 +100,8 @@ const PowerPoint = () => {
                     ))}
                 </Col>
             )}
-            </div>
         </div>
     );
 };
 
-export default PowerPoint;
+export default PowerPointIframe;

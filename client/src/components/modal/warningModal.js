@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { DeleteBtn } from '../card';
 import useIdleTimer from '../windowEvents/useIdleTimer';
+import './modal.css';
 
-const Modal = () => {
+const WarningModal = () => {
 
     const idleTimer = useIdleTimer(600);
 
@@ -45,4 +46,4 @@ const Modal = () => {
     );
 };
 
-export default Modal;
+export default WarningModal;
