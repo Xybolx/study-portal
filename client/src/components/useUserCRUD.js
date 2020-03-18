@@ -45,10 +45,12 @@ const useUserCRUD = () => {
     };
 
     const editUserValues = (id, userData) => {
-        API.editUser(id, userData)
-            .then(res => getUsers())
-            .then(() => setTimeout(() => setIsSubmitted(true), 2000))
-            .catch(err => console.log(err));
+        API.deleteUser(id)
+        .then(res => API.saveUser(userData))
+        .then(() => setTimeout(() => {
+            setIsSubmitted(true)
+    }, 2000))
+        .catch(err => console.log(err))
     };
 
     return {
