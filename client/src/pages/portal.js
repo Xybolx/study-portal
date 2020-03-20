@@ -4,6 +4,7 @@ import UserContext from '../components/context/userContext';
 import Title from '../components/title/title';
 import { PortalNav } from '../components/navbar';
 import { Col } from '../components/grid';
+import Header from '../components/header';
 
 const Portal = () => {
 
@@ -20,11 +21,15 @@ const Portal = () => {
         <div>
             <PortalNav />
             <Title />
+            <Header
+                headerText={`${user.permissions} Dashboard`}
+                subText=""
+                subLink="/roster"
+                subLinkText="Roster"
+                icon={<span className="fas fa-user-md" />}
+            />
             <Col id="portalTitle">
                 <div className="card">
-                    <div className="card-header">
-                        <h5><i className="fas fa-tachometer-alt" /> {`${user.permissions} Dashboard`}</h5>
-                    </div>      
                     <Col className="text-left">
                         <h4 className="ml-2 my-3" style={adminBlockStyle}>
                             <Link
@@ -36,7 +41,7 @@ const Portal = () => {
                         <h4 className="ml-2 my-3">
                             <Link 
                                 to="/roster">
-                                <span className="far fa-list-alt fa-fw"></span>
+                                <span className="fas fa-user-md" />
                                 View Roster
                             </Link>
                         </h4>

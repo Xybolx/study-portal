@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import SuccessAlert from '../components/alert/successAlert';
 import useUserCRUD from '../components/useUserCRUD';
 import { Label, Input, Select, FormBtn, useForm } from '../components/form';
 import { Col } from '../components/grid';
@@ -45,6 +46,7 @@ const Entry = () => {
             <Title />
             <div className="container">
                 <Col>
+                <SuccessAlert />
                     <div className="card">
                         <div className="card-header">
                             <CardHeader>

@@ -27,7 +27,7 @@ export const CardSpan = ({ children }) => {
 export const DeleteBtn = props => {
     return (
         <button
-            className="btn btn-outline-danger btn-sm text-light"
+            className="btn btn-outline-danger btn-sm text-light mr-2"
             {...props}
         />
     );

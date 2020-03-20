@@ -5,9 +5,9 @@
     z-index: -9;
     min-height: 100%;
     width: 100%;
-    background: url("../../imgs/exterior.jpg"), rgba(0, 0, 0, 0.548);
-    background-blend-mode: color-dodge;
-    /* background: url("../../imgs/exterior.jpg"); */
+    /* background: url("../../imgs/exterior.jpg"), rgba(0, 0, 0, 0.747);
+    background-blend-mode: difference;
     background-size: cover;
-    background-repeat: repeat-y;
+    background-repeat: repeat-y; */
+    background: lightgoldenrodyellow;
   }

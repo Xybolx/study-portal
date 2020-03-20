@@ -1,6 +1,7 @@
 .card {
     margin-top: 20px;
-    box-shadow: 0 0 5px 1px rgb(79, 90, 187);
+    box-shadow: 0 0 5px 1px rgb(75, 92, 236);
+    text-shadow: .5px .5px .5px rgb(75, 92, 236); 
     border: unset;
     background: rgba(0, 0, 0, 0.664);
     color: whitesmoke;
@@ -8,9 +9,15 @@
 
 .card-header {
     color: whitesmoke;
-    background: black;
-    border: .5px solid  rgb(83, 76, 224);
+    background: rgba(0, 0, 0, 0.664);
+    /* border: .5px solid  rgb(83, 76, 224); */
   }
+
+.card-footer {
+  border-top: unset;
+  border-bottom: 2px solid  grey;
+  background: transparent;
+}
 
   .text-muted {
     padding-right: 10px;

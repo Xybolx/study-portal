@@ -4,7 +4,7 @@ import './title.css';
 
 const Title = props => {
     return (
-        <h1 className="title">
+        <div className="title container">
             <Particles
                 canvasClassName="canvas"
                 height="125px"
@@ -61,7 +61,7 @@ const Title = props => {
                 }} />
             {/* <img className="img-fluid" src="needle3.png" alt="" /> */}
                 {props.header}
-        </h1>
+        </div>
     );
 };
 

@@ -8,6 +8,7 @@ import { HomeNav } from '../components/navbar';
 import { CardHeader } from '../components/card';
 import { Label, Input, FormBtn, useForm } from '../components/form';
 import { Col } from '../components/grid';
+import Header from '../components/header';
 
 const LogIn = () => {
 
@@ -71,54 +72,60 @@ const LogIn = () => {
             <HomeNav />
             <Title />
             <div className="container">
-
-            <Col id="loginTitle">
-                <div className="card">
-                    <div className="card-header">
-                        <CardHeader>
-                            Enter log in info
-                        </CardHeader>
+                <Header
+                    headerText="Log In"
+                    subText=""
+                    subLink="/"
+                    subLinkText="Home"
+                    icon={<i className="fas fa-home" />}
+                />
+                <Col id="loginTitle">
+                    <div className="card">
+                        <div className="card-header">
+                            <CardHeader>
+                                Enter log in info
+                            </CardHeader>
+                        </div>
+                        <form className="text-left mt-3" onSubmit={handleFormSubmit}>
+                            <Label
+                                htmlFor="email">
+                                Email Address
+                            </Label>
+                            <Input
+                                name="email"
+                                type="email"
+                                placeholder="Enter Email"
+                                value={email}
+                                onChange={handleChange}
+                                required
+                                />
+                            <Label
+                                htmlFor="password">
+                                Password
+                            </Label>
+                            <Input
+                                name="password"
+                                type="password"
+                                placeholder="Enter Password"
+                                value={password}
+                                onChange={handleChange}
+                                minLength="6"
+                                required
+                                />
+                            <div id="submitError" className="text-danger">
+                                {message}
+                            </div>
+                            <div className="text-right">
+                                <FormBtn
+                                    type="submit"
+                                    disabled={
+                                        (!isValidEmail && !isValidPassword)}>
+                                    <i className="fas fa-sign-in-alt"></i> Login
+                                </FormBtn>
+                            </div>
+                        </form>
                     </div>
-                    <form className="text-left mt-3" onSubmit={handleFormSubmit}>
-                        <Label
-                            htmlFor="email">
-                            Email Address
-                        </Label>
-                        <Input
-                            name="email"
-                            type="email"
-                            placeholder="Enter Email"
-                            value={email}
-                            onChange={handleChange}
-                            required
-                            />
-                        <Label
-                            htmlFor="password">
-                            Password
-                        </Label>
-                        <Input
-                            name="password"
-                            type="password"
-                            placeholder="Enter Password"
-                            value={password}
-                            onChange={handleChange}
-                            minLength="6"
-                            required
-                            />
-                        <div id="submitError" className="text-danger">
-                            {message}
-                        </div>
-                        <div className="text-right">
-                            <FormBtn
-                                type="submit"
-                                disabled={
-                                    (!isValidEmail && !isValidPassword)}>
-                                <i className="fas fa-sign-in-alt"></i> Login
-                            </FormBtn>
-                        </div>
-                    </form>
-                </div>
-            </Col>
+                </Col>
             </div>
         </div>
     );

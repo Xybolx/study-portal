@@ -1,11 +1,14 @@
 import { useEffect, useCallback, useState, useContext } from 'react';
 import EditUserContext from './context/editUserContext';
+import SuccessContext from './context/successContext';
 import useArray from './useArray';
 import API from '../utils/API';
 
 const useUserCRUD = () => {
 
     const { setEditUser } = useContext(EditUserContext);
+
+    const { success, setSuccess } = useContext(SuccessContext);
 
     const [toEdit, setToEdit] = useState(false);
     
@@ -28,15 +31,39 @@ const useUserCRUD = () => {
 
     const saveUser = userData => {
         API.saveUser(userData)
-            .then(res => setTimeout(() => 
+            .then(res => setSuccess({
+                failure: false,
+                message: "User was created!"
+            }))
+            .then(() => setTimeout(() => 
             setIsSubmitted(true), 2000))
-            .catch(err => console.log(err));
+            .catch(err => {
+                if (err) {
+                    setSuccess({
+                        failure: true,
+                        message: "Error: Duplicate email!"
+                    });
+                    console.log(err)
+                } 
+            });
     };
 
     const deleteUser = id => {
         API.deleteUser(id)
-            .then(res => getUsers())
-            .catch(err => console.log(err));
+            .then(res => setSuccess({
+                failure: false,
+                message: "User was deleted!"
+            }))
+            .then(() => getUsers())
+            .catch(err => {
+                if (err) {
+                    setSuccess({
+                        failure: true,
+                        message: "Error: Something went wrong..."
+                    });
+                    console.log(err)
+                } 
+            });
     };
 
     const reviseUser = roster => {
@@ -46,11 +73,21 @@ const useUserCRUD = () => {
 
     const editUserValues = (id, userData) => {
         API.deleteUser(id)
-        .then(res => API.saveUser(userData))
-        .then(() => setTimeout(() => {
-            setIsSubmitted(true)
-    }, 2000))
-        .catch(err => console.log(err))
+        .then(res => setSuccess({
+            failure: false,
+            message: "User was edited!"
+        }))
+        .then(() => API.saveUser(userData))
+        .then(() => setTimeout(() => setIsSubmitted(true), 2000))
+        .catch(err => {
+            if (err) {
+                setSuccess({
+                    failure: true,
+                    message: "Error: Something went wrong..."
+                });
+                console.log(err)
+            } 
+        });
     };
 
     return {

@@ -26,7 +26,7 @@ const PowerPoint = () => {
         <div>
             <PortalNav />
             <Title />
-            <div className="container">
+            <div className="container powerpoints">
             {powerPoints && (
                 <Col>
                     {powerPoints.map(ppt => (

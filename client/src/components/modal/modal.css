@@ -4,8 +4,8 @@
   }
   
   .modal-header {
-    background: rgba(0, 0, 0, 0.61);
-    border-bottom: 1px solid  rgb(83, 76, 224);
+    background: rgba(0, 0, 0, 0.664);
+    border: unset;
     color: whitesmoke;
   }
   

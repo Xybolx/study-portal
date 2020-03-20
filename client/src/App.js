@@ -1,9 +1,9 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom';
 import UserContext from './components/context/userContext';
 import PowerPointContext from './components/context/powerPointContext';
 import EditUserContext from './components/context/editUserContext';
-import useIdleTimer from './components/windowEvents/useIdleTimer';
+import SuccessContext from './components/context/successContext';
 import useArray from './components/useArray';
 import Home from './pages/home';
 import Entry from './pages/entry';
@@ -31,84 +31,85 @@ const App = () => {
 
   const editValue = useMemo(() => ({ editUser, setEditUser }), [editUser, setEditUser]);
 
-  const idleTimer = useIdleTimer(600);
+  const [success, setSuccess] = useState({
+    failure: false,
+    message: ""
+  });
 
-  useEffect(() => {
-    if (idleTimer === 0) {
-      window.location = "/logout";
-    }
-  }, [idleTimer]);
+  const successValue = useMemo(() => ({ success, setSuccess }), [success, setSuccess]);
 
   return (
     <Router>
       <div className="App">
-        <WarningModal />
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <PowerPointContext.Provider value={powerPointValue}>
-          <UserContext.Provider value={value}>
-            <Route exact path='/login' component={LogIn} />
+          <WarningModal />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <SuccessContext.Provider value={successValue}>
+              <PowerPointContext.Provider value={powerPointValue}>
+              <UserContext.Provider value={value}>
+                <Route exact path='/login' component={LogIn} />
 
-            <Route exact path="/portal" render={() => (
-              value.user === null ? (
-                <Redirect to="/logout" />
-                ) : (
-                  <Portal />
-              ))} 
-            />
+                <Route exact path="/portal" render={() => (
+                  value.user === null ? (
+                    <Redirect to="/logout" />
+                    ) : (
+                      <Portal />
+                      ))} 
+                      />
 
-            <EditUserContext.Provider value={editValue}>
-            <Route exact path="/roster" render={() => (
-              value.user === null ? (
-                <Redirect to="/logout" />
-                ) : (
-                  <Roster />
-              ))} 
-            />
+                <EditUserContext.Provider value={editValue}>
+                <Route exact path="/roster" render={() => (
+                  value.user === null ? (
+                    <Redirect to="/logout" />
+                    ) : (
+                      <Roster />
+                      ))} 
+                      />
 
-            <Route exact path="/powerpoint" component={PowerPoint} />
+                <Route exact path="/powerpoint" component={PowerPoint} />
 
-            <Route exact path="/powerentry" render={() => (
-              value.user === null ? (
-                <Redirect to="/logout" />
-                ) : value.user.permissions === "Student" ? (
-                  <Portal />
-                ) : value.user.permissions === "Admin" ? (
-                  <PowerEntry />
-                ) : (
-                  <Redirect to="/logout" />
-              ))} 
-            />
+                <Route exact path="/powerentry" render={() => (
+                  value.user === null ? (
+                    <Redirect to="/logout" />
+                    ) : value.user.permissions === "Student" ? (
+                      <Portal />
+                      ) : value.user.permissions === "Admin" ? (
+                        <PowerEntry />
+                        ) : (
+                          <Redirect to="/logout" />
+                          ))} 
+                          />
 
-            <Route exact path='/logout' component={LogOut} />
-            
-            <Route exact path="/entry" render={() => (
-              value.user === null ? (
-                <Redirect to="/logout" />
-                ) : value.user.permissions === "Student" ? (
-                  <Portal />
-                ) : value.user.permissions === "Admin" ? (
-                  <Entry />
-                ) : (
-                  <Redirect to="/logout" />
-              ))} 
-            />
+                <Route exact path='/logout' component={LogOut} />
 
-            <Route exact path="/edit" render={() => (
-              value.user === null ? (
-                <Redirect to="/logout" />
-                ) : value.user.permissions === "Student" ? (
-                  <Portal />
-                ) : value.user.permissions === "Admin" ? (
-                  <Edit />
-                ) : (
-                  <Redirect to="/logout" />
-              ))} 
-            />
-            </EditUserContext.Provider>
-          </UserContext.Provider>
-          </PowerPointContext.Provider>
-        </Switch>
+                <Route exact path="/entry" render={() => (
+                  value.user === null ? (
+                    <Redirect to="/logout" />
+                    ) : value.user.permissions === "Student" ? (
+                      <Portal />
+                      ) : value.user.permissions === "Admin" ? (
+                        <Entry />
+                        ) : (
+                          <Redirect to="/logout" />
+                          ))} 
+                          />
+
+                <Route exact path="/edit" render={() => (
+                  value.user === null ? (
+                    <Redirect to="/logout" />
+                    ) : value.user.permissions === "Student" ? (
+                      <Portal />
+                      ) : value.user.permissions === "Admin" ? (
+                        <Edit />
+                        ) : (
+                          <Redirect to="/logout" />
+                          ))} 
+                          />
+                </EditUserContext.Provider>
+              </UserContext.Provider>
+              </PowerPointContext.Provider>
+            </SuccessContext.Provider>
+          </Switch>
       </div>
     </Router>
   );

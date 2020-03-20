@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import UserContext from '../components/context/userContext';
 import moment from 'moment';
 import useUserCRUD from '../components/useUserCRUD';
+import SuccessAlert from '../components/alert/successAlert';
 import { Col } from '../components/grid';
 import { CardHeader, CardItem, CardSpan, DeleteBtn, ConfirmBtn, EditBtn } from '../components/card';
 
@@ -27,30 +28,38 @@ const Users = () => {
         <div className="container">
             {users && (
                 <Col>
+                <SuccessAlert />
+                    <div className="card">
+                        <div className="card-header">
+                            <CardHeader>
+                            <span className="fas fa-user-md" /> Roster
+                            </CardHeader>
+                        </div>
                     {users.map(roster => (
-                        <div className="card" key={roster._id}>
-                            <div className="card-header">
-                                <CardHeader>
-                                    {roster.name}
-                                </CardHeader>
-                            </div>
-                            <div className="card-body text-left">
+                            <div key={roster._id} className="card-body text-left">
                                 <CardItem>
-                                    Email:
+                                    Name :
+                                        <CardSpan>
+                                            &nbsp;
+                                            {roster.name}
+                                        </CardSpan>
+                                </CardItem>
+                                <CardItem>
+                                    Email :
                                         <CardSpan>
                                             &nbsp;
                                             {roster.email}
                                         </CardSpan>
                                 </CardItem>
                                 <CardItem>
-                                    Permissions:
+                                    Permissions :
                                         <CardSpan>
                                         &nbsp;{roster.permissions}
                                     </CardSpan>
                                 </CardItem>
                                 <CardItem>
-                                    Last Activity:
-                                        <CardSpan>
+                                    Last Activity :
+                                    <CardSpan>
                                         &nbsp;{
                                             roster.lastLogIn !== null ? 
                                             moment(roster.lastLogIn).fromNow() :
@@ -58,7 +67,7 @@ const Users = () => {
                                         }
                                     </CardSpan>
                                 </CardItem>
-                                <div className="text-right">
+                                <div className="card-footer text-right">
                                     <DeleteBtn
                                         style={adminInlineStyle}
                                         data-toggle="modal"
@@ -84,7 +93,7 @@ const Users = () => {
                                             <div className="modal-body">
                                                 <strong>Are you sure you want to delete {roster.name}?</strong>
                                             </div>
-                                            <div className="modal-footer">
+                                            <div className="text-right mb-3 mr-3">
                                                 <DeleteBtn data-dismiss="modal">
                                                     <i className="fas fa-times fa-fw" />No</DeleteBtn>
                                                 <ConfirmBtn data-dismiss="modal" onClick={() => deleteUser(roster._id)}><i className="fas fa-check fa-fw" />Yes</ConfirmBtn>
@@ -93,8 +102,8 @@ const Users = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     ))}
+                    </div>
                 </Col>
             )}
         </div>

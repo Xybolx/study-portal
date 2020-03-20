@@ -1,5 +1,5 @@
 .App {
-  /* background: rgba(132, 197, 197, 0.13); */
+  max-height: 100%;
   text-align: center;
 }
 
@@ -19,8 +19,8 @@ button:hover {
 }
 
 .modal-header {
-  background: rgba(0, 0, 0, 0.61);
-  border-bottom: 1px solid  rgb(83, 76, 224);
+  background: rgba(0, 0, 0, 0.575);
+  /* border-bottom: 1px solid  rgb(83, 76, 224); */
   color: whitesmoke;
 }
 
@@ -33,11 +33,40 @@ button:hover {
   border: 1px solid  rgb(79, 90, 187);
 }
 
-.users {
-  height: 500px;
-  overflow: auto;
+.users,
+.powerpoints {
+  max-height: 500px;
+  overflow: scroll;
 }
 
 .home-img {
-  background: whitesmoke;
+  background: url("./imgs/exterior.jpg"), rgba(32, 32, 32, 0.514);
+  background-blend-mode: color-dodge;
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-height: 350px;
+  box-shadow: 0 0 5px 1px rgb(75, 92, 236);
+}
+
+.alert-success {
+  background: rgba(0, 0, 0, 0.637);
+  border: 1px solid lawngreen;
+  color: lawngreen;
+}
+
+.alert-danger {
+  background: rgba(0, 0, 0, 0.637);
+  border: 1px solid tomato;
+  color: tomato;
+}
+
+.titleSubHeader {
+  background: rgba(201, 199, 199, 0.808);
+  border: 1px solid dodgerblue;
+}
+
+.titleHeader {
+  background: rgba(201, 199, 199, 0.803);
+  border: 1px solid dodgerblue;
+  margin-bottom: 10px;
 }

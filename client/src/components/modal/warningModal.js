@@ -33,7 +33,7 @@ const WarningModal = () => {
                         <div className="modal-body">
                             <strong>You will be logged out in <span className="text-danger">{idleTimer}</span> seconds</strong>
                         </div>
-                        <div className="modal-footer">
+                        <div className="text-right">
                             <DeleteBtn data-dismiss="modal">
                                 <i className="fas fa-times fa-fw" />
                                 Cancel

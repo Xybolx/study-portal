@@ -19,7 +19,7 @@ const Edit = () => {
         email: editUser.email,
         password: '',
         permissions: editUser.permissions,
-        lastLogin: Date.now()
+        lastLogin: ''
     });
 
     const { name, email, password, permissions, lastLogIn } = values;
@@ -32,7 +32,7 @@ const Edit = () => {
             email,
             password,
             permissions,
-            lastLogIn
+            lastLogIn: Date.now()
         };
         if (name
             && email
