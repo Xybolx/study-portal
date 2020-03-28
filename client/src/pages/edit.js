@@ -50,7 +50,7 @@ const Edit = () => {
         <div>
             <EditNav />
             <Title />
-            <div className="container">
+            <div className="container mb-5 fadeIn">
                 <Col>
                 <div className="card">
                     <div className="card-header">
@@ -65,7 +65,7 @@ const Edit = () => {
                             <Label htmlFor="email">Email Address</Label>
                             <Input name="email" type="email" placeholder="Enter Email" value={values.email} onChange={handleChange} required />
                             <Label htmlFor="password">Password</Label>
-                            <Input name="password" type="password" placeholder="Enter Password" value={values.password} onChange={handleChange} required />
+                            <Input name="password" type="password" placeholder="Enter Password" value={values.password} onChange={handleChange} minLength="6" required />
                             <Label htmlFor="permissions">Choose Permissions</Label>
                             <Select name="permissions" placeholder="Choose Permissions" option1="Student" option2="Admin" value={values.permissions} onChange={handleChange} required />
                             <FormBtn

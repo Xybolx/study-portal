@@ -37,7 +37,7 @@ const PowerEntry = () => {
         <div>
             <PortalNav />
             <Title />
-            <div className="container">
+            <div className="container fadeIn">
                 <Col>
                     <div className="card">
                         <div className="card-header">

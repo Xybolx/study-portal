@@ -10,15 +10,6 @@ const Home = () => {
         <>
             <HomeNav />
             <Title />
-            <div className="container">
-                <Header
-                    headerText="I.C.U. Study Portal"
-                    subText=""
-                    subLink="/login"
-                    subLinkText="LogIn"
-                    icon={<i className="fas fa-sign-in-alt" />}
-                />
-            </div>
         </>
     );
 };

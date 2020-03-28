@@ -1,3 +1,15 @@
+@keyframes FadeIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
 .App {
   max-height: 100%;
   text-align: center;
@@ -35,14 +47,13 @@ button:hover {
 
 .users,
 .powerpoints {
-  max-height: 500px;
   overflow: scroll;
 }
 
 .home-img {
-  background: url("./imgs/exterior.jpg"), rgba(32, 32, 32, 0.514);
+  background: url("./imgs/exterior.jpg"), rgba(49, 48, 48, 0.815);
   background-blend-mode: color-dodge;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   max-height: 350px;
   box-shadow: 0 0 5px 1px rgb(75, 92, 236);
@@ -60,7 +71,7 @@ button:hover {
   color: tomato;
 }
 
-.titleSubHeader {
+/* .titleSubHeader {
   background: rgba(201, 199, 199, 0.808);
   border: 1px solid dodgerblue;
 }
@@ -69,4 +80,17 @@ button:hover {
   background: rgba(201, 199, 199, 0.803);
   border: 1px solid dodgerblue;
   margin-bottom: 10px;
+} */
+
+/* .home-img {
+  background: whitesmoke;
+} */
+
+.title {
+  color: rgb(104, 135, 238);
+  text-shadow: 1px 1px 1px gold;
+}
+
+.fadeIn {
+  animation: FadeIn 1.5s;
 }

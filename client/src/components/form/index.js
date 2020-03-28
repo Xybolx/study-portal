@@ -57,9 +57,9 @@ export const Select = props => {
 export const InputGroup = props => {
   return (
     <div className="input-group mb-3">
-      <input type="text" className="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" {...props} />
+      <input type="text" className="form-control" placeholder={props.placeholder} aria-label="Recipient's username" aria-describedby="button-addon2" {...props} />
       <div className="input-group-append">
-        <button className="btn btn-outline-secondary" type="button" id="button-addon2" {...props}>Reset</button>
+        <button onClick={props.onClick} className="btn btn-success" type="button" id="button-addon2" {...props}>Reset</button>
       </div>
     </div>
   );

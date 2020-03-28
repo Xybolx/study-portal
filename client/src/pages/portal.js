@@ -21,13 +21,6 @@ const Portal = () => {
         <div>
             <PortalNav />
             <Title />
-            <Header
-                headerText={`${user.permissions} Dashboard`}
-                subText=""
-                subLink="/roster"
-                subLinkText="Roster"
-                icon={<span className="fas fa-user-md" />}
-            />
             <Col id="portalTitle">
                 <div className="card">
                     <Col className="text-left">

@@ -47,7 +47,7 @@ const Entry = () => {
             <div className="container">
                 <Col>
                 <SuccessAlert />
-                    <div className="card">
+                    <div className="card fadeIn">
                         <div className="card-header">
                             <CardHeader>
                                 New Roster Entry

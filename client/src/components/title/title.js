@@ -1,10 +1,18 @@
 import React from 'react';
 import Particles from 'react-particles-js';
 import './title.css';
+import Header from '../header';
 
 const Title = props => {
     return (
         <div className="title container">
+            <Header
+                headerText="I.C.U. Study Portal"
+                subText=""
+                subLink="/login"
+                subLinkText="LogIn"
+                icon={<i className="fas fa-user-md" />}
+            />
             <Particles
                 canvasClassName="canvas"
                 height="125px"

@@ -50,7 +50,7 @@ const useUserCRUD = () => {
 
     const deleteUser = id => {
         API.deleteUser(id)
-            .then(res => setSuccess({
+            .then(() => setSuccess({
                 failure: false,
                 message: "User was deleted!"
             }))
